@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [3.10, 3.11]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+
+      - name: Lint / smoke test
+        run: |
+          python -c "print('CI smoke test: python OK')"
+
+      - name: Run experiment (HF) — only if HF_TOKEN secret provided
+        if: ${{ secrets.HF_TOKEN != '' }}
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          mkdir -p experiments/outputs
+          bash experiments/run_and_save.sh vandijklab/C2S-Scale-Gemma-2-27B hf experiments/example_prompt.txt 512
+
+      - name: Run experiment (ollama) — skip by default
+        if: false
+        run: |
+          # Enable and customize this step if you host model in Ollama on the runner
+          # bash experiments/run_and_save.sh gemma ollama experiments/example_prompt.txt 512
+          echo "Ollama step disabled by default"
+
+      - name: List experiment outputs
+        run: |
+          ls -la experiments/outputs || true
+
+      - name: Run embedding-based evaluation (if outputs exist)
+        run: |
+          if [ -d "experiments/outputs" ] && [ "$(ls -A experiments/outputs | wc -l)" -gt 0 ]; then
+            python experiments/eval_embeddings.py --outputs-dir experiments/outputs --model all-MiniLM-L6-v2
+          else
+            echo "No experiment outputs found, skipping eval"
+          fi

@@ -1,0 +1,13 @@
+# Requirements for reproducible runs of example.py / Docker / CI
+# Pin exact versions before publishing for full reproducibility.
+c2s-scale
+requests>=2.31.0
+sentence-transformers>=2.2.2
+numpy>=1.24.0
+scipy>=1.10.0
+huggingface-hub>=0.18.1
+# Optional for local large-model support:
+# torch
+# transformers
+# accelerate
+# bitsandbytes
