@@ -42,10 +42,30 @@ pip install c2s-scale
 ```
 
 3) Example usage (CLI)
+
+If you installed the package from PyPI or have the repo on your PATH this may be available as a top-level CLI named `c2s-scale`. The repo also contains a portable, source-first CLI you can run with Python:
+
 ```bash
-# Common pattern if c2s-scale provides a CLI
+# If the package is installed and exposes a console script:
 c2s-scale --help
 c2s-scale run --config path/to/config.yaml
+
+# Or run the included CLI directly from source:
+python -m c2s_scale.cli --help
+python -m c2s_scale.cli chat                # interactive REPL
+python -m c2s_scale.cli send "Hello"       # send a single message and exit
+python -m c2s_scale.cli run --config path/to/config.yaml
+```
+
+Behavior notes:
+- If OPENAI_API_KEY is present in your environment the CLI will use OpenAI's chat completions endpoint (default model: `gpt-3.5-turbo`). Set `--model` or `-m` to change models.
+- If no API key is set, the CLI falls back to a deterministic local stub reply (safe, offline).
+- The interactive REPL supports quick commands:
+  - `/exit` — exit REPL
+  - `/help` — show help
+  - `/history` — show message history
+  - `/model <name>` — change model for subsequent requests
+  - `/clear` — clear conversation history
 ```
 
 4) Example usage (Python)

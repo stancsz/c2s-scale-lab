@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "c2s-scale-longevity-experiment"
+version = "0.1.0"
+description = "CLI and tools for the c2s-scale longevity experiment"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+  {name = "stanc"}
+]
+dependencies = [
+  "requests>=2.0",
+]
+
+[project.scripts]
+c2s-scale = "c2s_scale.cli:main"
