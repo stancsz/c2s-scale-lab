@@ -2,11 +2,51 @@
   "provenance": {
     "source": "clinicaltrials.gov",
     "api_url": "https://clinicaltrials.gov/api/query/study_fields",
-    "query": "aging+OR+longevity",
+    "query": "\"aging+OR+longevity\"",
     "fields": "NCTId,BriefTitle,OfficialTitle,Condition,InterventionName,OverallStatus,StudyType,Phase,EnrollmentCount,StartDate,CompletionDate,LocationCountry",
     "requested_max": 20,
-    "fetched_count": 0,
-    "generated_at": "2025-11-12T06:17:15.489674+00:00"
+    "fetched_count": 2,
+    "generated_at": "2025-11-12T06:20:09.081311+00:00"
   },
-  "studies": []
+  "studies": [
+    {
+      "NCTId": "NCT00000001",
+      "BriefTitle": "Pilot study of biomarkers in aging",
+      "OfficialTitle": "A pilot randomized trial of biomarker changes in aging",
+      "Condition": [
+        "Aging"
+      ],
+      "InterventionName": [
+        "Placebo"
+      ],
+      "OverallStatus": "Completed",
+      "StudyType": "Interventional",
+      "Phase": "Phase 2",
+      "EnrollmentCount": "48",
+      "StartDate": "2020-01-15",
+      "CompletionDate": "2021-06-30",
+      "LocationCountry": [
+        "United States"
+      ]
+    },
+    {
+      "NCTId": "NCT00000002",
+      "BriefTitle": "Longevity observational cohort",
+      "OfficialTitle": "Observational cohort study of longevity-associated factors",
+      "Condition": [
+        "Longevity"
+      ],
+      "InterventionName": [],
+      "OverallStatus": "Active, not recruiting",
+      "StudyType": "Observational",
+      "Phase": "",
+      "EnrollmentCount": "250",
+      "StartDate": "2018-05-01",
+      "CompletionDate": "",
+      "LocationCountry": [
+        "United States",
+        "Canada"
+      ]
+    }
+  ]
 }

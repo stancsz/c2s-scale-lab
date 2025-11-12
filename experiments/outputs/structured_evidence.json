@@ -1,20 +1,12 @@
 {
   "provenance": {
-    "generated_at": "2025-11-11T22:54:00Z",
+    "generated_at": "2025-11-12T06:21:41.818559Z",
     "trials_input_count": 2,
-    "pubmed_input_count": 2
+    "pubmed_input_count": 0
   },
   "top_interventions": [
     [
-      "metformin",
-      2
-    ],
-    [
-      "rapamycin",
-      1
-    ],
-    [
-      "exercise",
+      "placebo",
       1
     ]
   ],
@@ -22,49 +14,33 @@
     {
       "source": "clinicaltrials.gov",
       "id": "NCT00000001",
-      "title": "Metformin to test effects on markers of aging in older adults (Pilot study, 100 participants)",
-      "intervention": "Metformin",
-      "condition": "Aging; Frailty",
+      "title": "Pilot study of biomarkers in aging",
+      "intervention": "Placebo",
+      "condition": "Aging",
       "status": "Completed",
       "study_type": "Interventional",
       "phase": "Phase 2",
-      "sample_size": 100,
-      "start_date": "2020-01-01",
-      "completion_date": "2021-12-31",
+      "sample_size": 48,
+      "start_date": "2020-01-15",
+      "completion_date": "2021-06-30",
       "location_country": "United States",
       "outcome_snippet": null,
       "raw": {
-        "NCTId": [
-          "NCT00000001"
-        ],
-        "BriefTitle": [
-          "Metformin to test effects on markers of aging in older adults (Pilot study, 100 participants)"
+        "NCTId": "NCT00000001",
+        "BriefTitle": "Pilot study of biomarkers in aging",
+        "OfficialTitle": "A pilot randomized trial of biomarker changes in aging",
+        "Condition": [
+          "Aging"
         ],
         "InterventionName": [
-          "Metformin"
+          "Placebo"
         ],
-        "Condition": [
-          "Aging",
-          "Frailty"
-        ],
-        "OverallStatus": [
-          "Completed"
-        ],
-        "StudyType": [
-          "Interventional"
-        ],
-        "Phase": [
-          "Phase 2"
-        ],
-        "EnrollmentCount": [
-          "100"
-        ],
-        "StartDate": [
-          "2020-01-01"
-        ],
-        "CompletionDate": [
-          "2021-12-31"
-        ],
+        "OverallStatus": "Completed",
+        "StudyType": "Interventional",
+        "Phase": "Phase 2",
+        "EnrollmentCount": "48",
+        "StartDate": "2020-01-15",
+        "CompletionDate": "2021-06-30",
         "LocationCountry": [
           "United States"
         ]
@@ -73,81 +49,35 @@
     {
       "source": "clinicaltrials.gov",
       "id": "NCT00000002",
-      "title": "Rapamycin and aging biomarkers in adults (50 participants)",
-      "intervention": "Rapamycin",
-      "condition": "Aging",
-      "status": "Recruiting",
-      "study_type": "Interventional",
-      "phase": "Phase 1",
-      "sample_size": 50,
-      "start_date": "2022-06-01",
-      "completion_date": null,
-      "location_country": "Canada",
+      "title": "Longevity observational cohort",
+      "intervention": null,
+      "condition": "Longevity",
+      "status": "Active, not recruiting",
+      "study_type": "Observational",
+      "phase": "",
+      "sample_size": 250,
+      "start_date": "2018-05-01",
+      "completion_date": "",
+      "location_country": "United States",
       "outcome_snippet": null,
       "raw": {
-        "NCTId": [
-          "NCT00000002"
-        ],
-        "BriefTitle": [
-          "Rapamycin and aging biomarkers in adults (50 participants)"
-        ],
-        "InterventionName": [
-          "Rapamycin"
-        ],
+        "NCTId": "NCT00000002",
+        "BriefTitle": "Longevity observational cohort",
+        "OfficialTitle": "Observational cohort study of longevity-associated factors",
         "Condition": [
-          "Aging"
+          "Longevity"
         ],
-        "OverallStatus": [
-          "Recruiting"
-        ],
-        "StudyType": [
-          "Interventional"
-        ],
-        "Phase": [
-          "Phase 1"
-        ],
-        "EnrollmentCount": [
-          "50"
-        ],
-        "StartDate": [
-          "2022-06-01"
-        ],
-        "CompletionDate": [
-          null
-        ],
+        "InterventionName": [],
+        "OverallStatus": "Active, not recruiting",
+        "StudyType": "Observational",
+        "Phase": "",
+        "EnrollmentCount": "250",
+        "StartDate": "2018-05-01",
+        "CompletionDate": "",
         "LocationCountry": [
+          "United States",
           "Canada"
         ]
-      }
-    },
-    {
-      "source": "pubmed",
-      "id": "12345678",
-      "title": "Randomized trial of metformin in older adults: effects on inflammation and functional markers",
-      "doi": "10.1000/j.journal.2023.01.001",
-      "intervention": "metformin",
-      "sample_size": 120,
-      "outcome_snippet": "Abstract: We randomized 120 older adults to metformin or placebo and measured inflammatory markers and function over 12 months. Results showed modest changes in markers but no adverse safety signals...",
-      "raw": {
-        "pmid": "12345678",
-        "title": "Randomized trial of metformin in older adults: effects on inflammation and functional markers",
-        "abstract": "We randomized 120 older adults to metformin or placebo and measured inflammatory markers and function over 12 months. Results showed modest changes in markers but no adverse safety signals.",
-        "doi": "10.1000/j.journal.2023.01.001"
-      }
-    },
-    {
-      "source": "pubmed",
-      "id": "23456789",
-      "title": "Exercise intervention improves composite healthspan markers in midlife adults",
-      "doi": "10.1000/j.journal.2022.05.002",
-      "intervention": "exercise",
-      "sample_size": 200,
-      "outcome_snippet": "Abstract: A 16-week supervised exercise program in 200 participants improved composite markers of healthspan including VO2max and insulin sensitivity...",
-      "raw": {
-        "pmid": "23456789",
-        "title": "Exercise intervention improves composite healthspan markers in midlife adults",
-        "abstract": "A 16-week supervised exercise program in 200 participants improved composite markers of healthspan including VO2max and insulin sensitivity.",
-        "doi": "10.1000/j.journal.2022.05.002"
       }
     }
   ]

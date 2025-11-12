@@ -1,0 +1,12 @@
+{
+  "provenance": {
+    "source": "pubmed",
+    "esearch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi",
+    "efetch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi",
+    "query": "aging+OR+longevity",
+    "requested_max": 200,
+    "fetched_count": 0,
+    "generated_at": "2025-11-12T06:21:27.562863Z"
+  },
+  "articles": []
+}
