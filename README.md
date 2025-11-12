@@ -138,4 +138,47 @@ Next action (completed / next steps)
   ```bash
   ollama run <model-name> --prompt "$(cat experiments/example_prompt.txt)"
   ```
-- If you want, I can add an Ollama import/conversion helper and a small eval runner that saves outputs to experiments/outputs for embedding-based analysis.
+- Add an Ollama import/conversion helper and an evaluation runner that saves outputs to `experiments/outputs/` for embedding-based analysis.
+
+LLM research example: factors affecting cell aging and longevity
+- Goal: demonstrate using an LLM to gather and summarize high-level, peer-reviewed concepts about cellular aging to inform experiments and documentation. The summary below is an LLM-style synthesis suitable for README-level references; always verify details against primary literature before experimental use.
+
+Summary
+- Cellular aging (senescence) and organismal longevity are multifactorial processes influenced by genetic, molecular, cellular, and environmental factors. Key, well-supported mechanisms include genomic instability and DNA damage accumulation, telomere shortening, epigenetic alterations, mitochondrial dysfunction, loss of proteostasis, cellular senescence, stem cell exhaustion, deregulated nutrient sensing (e.g., insulin/IGF-1, mTOR, AMPK), impaired autophagy, chronic inflammation (inflammaging), and extracellular matrix/microenvironmental changes. Lifestyle and environmental inputs (diet, exercise, toxins, microbiome) modulate many of these pathways.
+
+Key factors (concise)
+- Genomic instability and DNA damage: accumulation of mutations and impaired repair raises mutation burden and dysfunction.
+- Telomere attrition: progressive shortening of telomeres limits replicative capacity and can trigger senescence.
+- Epigenetic alterations: age-related changes in DNA methylation, histone marks, and chromatin organization alter gene expression programs.
+- Mitochondrial dysfunction and ROS: reduced mitochondrial efficiency and increased reactive oxygen species affect energy homeostasis and damage macromolecules.
+- Proteostasis loss: impaired protein folding, clearance (ubiquitin-proteasome, autophagy) leads to protein aggregation and dysfunction.
+- Cellular senescence: stable cell-cycle arrest with a pro-inflammatory SASP (senescence-associated secretory phenotype) that affects tissue function.
+- Stem cell exhaustion: decline in regenerative capacity due to intrinsic and extrinsic factors.
+- Nutrient sensing and metabolic pathways: insulin/IGF-1 signaling, mTOR, AMPK, and sirtuins regulate lifespan in model organisms.
+- Autophagy and lysosomal function: critical for clearing damaged organelles and maintaining cellular health.
+- Chronic inflammation (inflammaging): low-grade systemic inflammation that exacerbates tissue decline.
+- Microenvironment and ECM remodeling: altered extracellular matrix can impair cell function and signaling.
+- Environmental/lifestyle modulators: diet, caloric restriction / intermittent fasting effects, exercise, sleep, exposure to toxins, and the microbiome.
+
+Example LLM prompt (use with your preferred model)
+```text
+Research assistant: Summarize the major molecular and cellular factors that drive cellular aging and affect organismal longevity. For each factor, provide a one-sentence description, two representative primary-review citations (author, year, journal), and a short note on experimental interventions or biomarkers commonly used. Keep the response concise and provide references suitable for follow-up literature review.
+```
+
+Example expected LLM output (short excerpt)
+- Telomere attrition — Telomere shortening limits replicative capacity and can trigger senescence; biomarkers: telomere length (qPCR, TRF); interventions: telomerase activation in model systems. (Lopez-Otín et al., 2013, Cell; Shay & Wright, 2019, Nat Rev Cancer)
+- Mitochondrial dysfunction — Age-related decline in mitochondrial function reduces ATP production and increases ROS; biomarkers: mitochondrial membrane potential, mtDNA damage; interventions: mitochondria-targeted antioxidants, exercise. (Lopez-Otín et al., 2013, Cell; Sun et al., 2016, Nat Rev Mol Cell Biol)
+
+Suggested follow-ups
+- Run the prompt against a well-curated LLM (local or hosted) and capture outputs into experiments/outputs/*.json for later embedding-based analysis (see experiments/eval_embeddings.py).
+- Cross-check LLM-provided citations against PubMed/Google Scholar and add canonical DOI/URLs in RESEARCH.md or _reference/.
+- Use the summary to seed specific experiment prompts (e.g., "Design an experiment to measure autophagy flux changes with age in primary human fibroblasts") and validate with domain experts.
+
+References (starter)
+- Lopez-Otín C., Blasco M.A., Partridge L., Serrano M., Kroemer G. (2013). The hallmarks of aging. Cell.
+- Kirkwood T.B.L. (2005). Understanding the odd science of aging. Cell.
+- Campisi J. (2013). Aging, Cellular Senescence, and Cancer. Annu Rev Physiol.
+
+(Replace or expand the above references with DOIs and more targeted citations after running an LLM-assisted literature pass.)
+
+</task_progress>
