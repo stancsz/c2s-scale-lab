@@ -1,0 +1,12 @@
+{
+  "provenance": {
+    "source": "clinicaltrials.gov",
+    "api_url": "https://clinicaltrials.gov/api/query/study_fields",
+    "query": "aging+OR+longevity",
+    "fields": "NCTId,BriefTitle,OfficialTitle,Condition,InterventionName,OverallStatus,StudyType,Phase,EnrollmentCount,StartDate,CompletionDate,LocationCountry",
+    "requested_max": 20,
+    "fetched_count": 0,
+    "generated_at": "2025-11-12T06:17:15.489674+00:00"
+  },
+  "studies": []
+}

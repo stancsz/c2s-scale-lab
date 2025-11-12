@@ -1,0 +1,36 @@
+{
+  "collected_at": "2025-11-12T06:06:54.336535+00:00",
+  "request": {
+    "url": "https://clinicaltrials.gov/api/query/study_fields",
+    "params": {
+      "expr": "aging OR longevity",
+      "fields": "NCTId,BriefTitle,OfficialTitle,Condition,InterventionName,OverallStatus,StudyType,Phase,EnrollmentCount,StartDate,CompletionDate,LocationCountry",
+      "min_rnk": "1",
+      "max_rnk": "1",
+      "fmt": "json"
+    },
+    "headers": {
+      "User-Agent": "c2s-scale-longevity-experiment/0.1",
+      "Accept": "application/json, text/plain, */*"
+    }
+  },
+  "status_code": 404,
+  "final_url": "https://clinicaltrials.gov/api/query/study_fields?expr=aging+OR+longevity&fields=NCTId%2CBriefTitle%2COfficialTitle%2CCondition%2CInterventionName%2COverallStatus%2CStudyType%2CPhase%2CEnrollmentCount%2CStartDate%2CCompletionDate%2CLocationCountry&min_rnk=1&max_rnk=1&fmt=json",
+  "response_headers": {
+    "Date": "Wed, 12 Nov 2025 06:06:55 GMT",
+    "Server": "istio-envoy",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+    "X-Frame-Options": "SAMEORIGIN",
+    "content-type": "text/html",
+    "x-envoy-upstream-service-time": "0",
+    "Vary": "Accept-Encoding",
+    "Content-Encoding": "gzip",
+    "X-UA-Compatible": "IE=Edge",
+    "X-XSS-Protection": "1; mode=block",
+    "Via": "1.1 google",
+    "Alt-Svc": "clear",
+    "Transfer-Encoding": "chunked"
+  },
+  "text_snippet": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx/1.26.2</center>\r\n</body>\r\n</html>\r\n",
+  "json_top_keys": null
+}

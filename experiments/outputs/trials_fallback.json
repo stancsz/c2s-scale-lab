@@ -1,0 +1,43 @@
+{
+  "studies": [
+    {
+      "NCTId": "NCT00000001",
+      "BriefTitle": "Pilot study of biomarkers in aging",
+      "OfficialTitle": "A pilot randomized trial of biomarker changes in aging",
+      "Condition": [
+        "Aging"
+      ],
+      "InterventionName": [
+        "Placebo"
+      ],
+      "OverallStatus": "Completed",
+      "StudyType": "Interventional",
+      "Phase": "Phase 2",
+      "EnrollmentCount": "48",
+      "StartDate": "2020-01-15",
+      "CompletionDate": "2021-06-30",
+      "LocationCountry": [
+        "United States"
+      ]
+    },
+    {
+      "NCTId": "NCT00000002",
+      "BriefTitle": "Longevity observational cohort",
+      "OfficialTitle": "Observational cohort study of longevity-associated factors",
+      "Condition": [
+        "Longevity"
+      ],
+      "InterventionName": [],
+      "OverallStatus": "Active, not recruiting",
+      "StudyType": "Observational",
+      "Phase": "",
+      "EnrollmentCount": "250",
+      "StartDate": "2018-05-01",
+      "CompletionDate": "",
+      "LocationCountry": [
+        "United States",
+        "Canada"
+      ]
+    }
+  ]
+}
