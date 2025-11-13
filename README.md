@@ -1,10 +1,12 @@
 # C2S-Scale Medical Research Lab — reproducible LLM experiments for biomedical research
 
-Goal
+A lightweight, reproducible toolkit for running and evaluating LLM-assisted workflows in biomedical research. This repository contains data-collection pipelines, evidence-extraction code, LLM synthesis helpers, and evaluation utilities designed to be auditable and runnable via virtualenv or Docker.
+
+## Goal
 - This repository represents the "C2S-Scale Medical Research Lab": a reproducible, auditable set of experiments, tools, and CI for using large language models (LLMs) safely in biomedical research. It focuses on running and evaluating c2s-scale (Gemma) and compatible LLMs via Hugging Face, Ollama, or local Transformers.
 - Provide clear, reproducible environment setup (venv, Docker), usage examples, and embedding-based evaluation pipelines while respecting model licensing and safety constraints.
 
-Quick checklist
+## Quick checklist
 - [x] Analyze requirements and create docs
 - [ ] Add example script (example.py)
 - [ ] Add setup scripts (scripts/setup.sh, scripts/setup.ps1)
@@ -12,6 +14,30 @@ Quick checklist
 - [ ] Add CI workflow for reproducible tests
 - [ ] Verify end-to-end run locally
 - [ ] Publish reproduction steps in a single script
+
+## Longevity mindmap (example)
+
+<!-- Longevity mindmap (Mermaid) -->
+```mermaid
+mindmap
+  root((Longevity research))
+    Senescence
+      Senolytics
+      Biomarkers: p16, SA-β-gal
+      Endpoints: frailty, physical performance
+    NutrientSensing
+      mTOR
+      Metformin
+      CaloricRestriction
+    Autophagy_Mito_NAD
+      NAD+ precursors
+      Mito markers
+      Autophagy flux
+```
+
+### Note on rendering and use
+- This diagram is a Mermaid mindmap. Some Markdown viewers (GitHub, VS Code Markdown Preview, GitLab) render Mermaid diagrams natively; others may show the raw text. If consistent rendering is required across all viewers, consider adding a fallback image (e.g., experiments/figures/longevity_mindmap.svg) and embedding it with: `![Longevity mindmap](experiments/figures/longevity_mindmap.svg)`.
+- The diagram is illustrative only and intended to showcase what this project can help produce. It is not a literature review or medical guidance. See the "Safety / disclaimers" section later in this README for full guidance on verification, provenance, and expert curation.
 
 Reproducible installation (recommended)
 
@@ -66,7 +92,6 @@ Behavior notes:
   - `/history` — show message history
   - `/model <name>` — change model for subsequent requests
   - `/clear` — clear conversation history
-```
 
 4) Example usage (Python)
 ```python
@@ -201,4 +226,96 @@ References (starter)
 
 (Replace or expand the above references with DOIs and more targeted citations after running an LLM-assisted literature pass.)
 
-</task_progress>
+---
+
+## Longevity research — existing work in this repository (summary)
+
+This repository already includes a focused set of reproducible tools and example outputs useful for early-stage longevity evidence synthesis and LLM-assisted literature workflows:
+
+- Data collection pipelines
+  - experiments/collect_trials.py — ClinicalTrials.gov metadata fetcher (example runs saved under experiments/outputs/)
+  - experiments/collect_pubmed.py — PubMed esearch + efetch helper (sample pipeline present; can be scaled)
+- Evidence extraction & normalization
+  - experiments/extract_evidence.py — heuristic extractor that produces structured JSON (experiments/outputs/structured_evidence.json)
+  - Current structured evidence (snapshot): 2 ClinicalTrials.gov items (pilot biomarker trial and an observational cohort)
+- Synthesis & reporting
+  - experiments/generate_llm_summary.py and experiments/generate_report.py — produce model-draft syntheses and render final_report.md via templates (experiments/report_template.md)
+  - experiments/outputs/final_report.md — template-driven report with provenance and safety disclaimers
+- Evaluation & embeddings
+  - experiments/eval_embeddings.py — scripts and patterns for embedding-based similarity and clustering analyses
+- Reproducibility & automation
+  - scripts/setup.sh, scripts/setup.ps1, Dockerfile, and a CI workflow (.github/workflows/ci.yml) to standardize environment and runs
+- Provenance & safety
+  - Outputs include generated timestamps, input counts, and explicit safety disclaimers (reports are non-clinical and require human verification)
+
+Current evidence snapshot (from experiments/outputs/structured_evidence.json)
+- 2 entries from ClinicalTrials.gov (one interventional Phase 2 pilot with Placebo, one observational cohort active/not recruiting)
+- No PubMed abstracts collected in current snapshot
+- Top intervention (automatically extracted): placebo (1)
+
+Implication: the repo demonstrates the end-to-end plumbing (fetch → extract → synthesize → evaluate) but currently contains a small sample dataset. The tooling is in place to scale data collection, normalization, and downstream LLM-assisted synthesis.
+
+## Top 3 areas to investigate (recommended, literature-aligned)
+
+These three areas are high-priority targets for further evidence collection and automated synthesis, with strong literature support and measurable outcomes:
+
+1. Cellular senescence & senolytics
+   - Why: senescent cells drive local inflammation (SASP) and tissue dysfunction; senolytic interventions show promising preclinical and early clinical signals.
+   - What to collect: clinical trials of senolytic drugs (e.g., dasatinib+quercetin), biomarkers of senescence (p16INK4a, SA-β-gal), functional endpoints (physical performance, frailty indices).
+2. Nutrient-sensing & metabolic interventions (mTOR, AMPK, metformin, rapamycin, caloric restriction)
+   - Why: conserved pathways with replicated lifespan effects in models and several translational clinical trials and observational studies.
+   - What to collect: randomized trials and cohort studies measuring metabolic biomarkers, immune markers, and clinical endpoints; preclinical meta-analyses.
+3. Autophagy / mitochondrial function & NAD+ metabolism
+   - Why: autophagy and mitochondrial health are central to proteostasis and cellular energetics; interventions (NAD+ precursors, exercise, mito-targeted therapies) have measurable biomarkers.
+   - What to collect: trials measuring autophagy flux, mitochondrial markers (mtDNA damage, membrane potential), functional readouts.
+
+Note: these areas overlap with the canonical "hallmarks of aging" and are practical to target with the current repo tooling.
+
+## Concrete next steps (actionable, repo-focused)
+
+1. Scale data collection
+   - Run broader queries for trials and PubMed to build a larger evidence corpus. Example:
+     ```bash
+     python experiments/collect_trials.py --query "senolytic OR senolytics OR senescence" --max 500 --out experiments/outputs/trials_senolytic.json
+     python experiments/collect_pubmed.py --query "senolytic trials OR senolytic clinical trial" --max 1000 --out experiments/outputs/pubmed_senolytic.json
+     ```
+   - Weekly scheduled pulls via CI (GitHub Actions) to keep corpus current.
+
+2. Improve extraction & normalization
+   - Enhance experiments/extract_evidence.py to:
+     - extract outcome measures and timepoints
+     - normalize interventions and conditions (use MeSH / UMLS / NCIt mappings)
+     - map trial status to standardized categories
+   - Add unit tests for extractor edge cases.
+
+3. Add citation verification and linking
+   - Cross-link PMIDs/DOIs/NCT IDs and add automated verification step (fetch metadata) to reduce hallucinated citations in LLM summaries.
+
+4. Expand evaluation & model benchmarking
+   - Use experiments/eval_embeddings.py to compare embeddings models and clustering parameters; record reproducible configs and metrics.
+   - Run LLM comparisons (local and hosted) using experiments/generate_llm_summary.py with identical prompts and temperature settings; save outputs for diffing.
+
+5. Build human-in-the-loop curation flow
+   - Export extracted evidence to CSV/Markdown for domain expert review.
+   - Add a simple review script that shows evidence items and allows accept/reject/notes, producing a curated JSON for final reporting.
+
+6. Add quantitative synthesis capabilities
+   - Where possible, aggregate effect-size metrics (mean differences, hazard ratios) or at minimum count evidence strength (trial phase, sample size, status).
+   - Implement a "strength-of-evidence" heuristic in extract_evidence.py (e.g., RCTs > cohorts > case reports).
+
+7. Improve reproducibility and CI
+   - Add a scheduled GitHub Action to run key pipelines (fetch → extract → synthesize) and save outputs as artifacts.
+   - Add a small example.py that demonstrates an end-to-end run with a single query to be used by CI and contributors.
+
+8. Documentation & provenance
+   - Expand RESEARCH.md and _reference/references.md with verified primary sources (DOIs/PMIDs) that the LLM outputs reference.
+   - Document curation guidelines and safe-use policies (already present in templates, but expand with explicit provenance checks required before publication).
+
+## Safety / disclaimers
+- All outputs produced by LLMs and automated extractors are draft-level and informational only. This repository explicitly avoids producing clinical recommendations. Any translation to practice requires domain expert review, verification of identifiers (NCT, DOI, PMID), and appropriate ethical oversight.
+
+---
+
+If you want, I can now:
+- run targeted collection commands for one of the top areas (senolytics, mTOR/metformin, or autophagy/NAD+) to populate experiments/outputs/, or
+- open and propose a small replace_in_file patch to add a short "Longevity research" README sidebar instead of the full-file overwrite above.
